@@ -126,7 +126,7 @@ export const getProductsController = asyncHandler(async (req, res) => {
   }
   productQuery = productQuery.skip(skip).limit(limit);
 
-  const products = await productQuery;
+  const products = await productQuery.populate("reviews");
 
   res.status(200).json({
     status: "success",
@@ -141,7 +141,9 @@ export const getSingleProductController = asyncHandler(async (req, res) => {
 
   //find product by id
 
-  let product = await Product.findById(productId).select("-__v");
+  let product = await Product.findById(productId)
+    .select("-__v")
+    .populate("reviews");
 
   if (!product) {
     res.status(401);

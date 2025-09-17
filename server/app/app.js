@@ -10,9 +10,12 @@ import productRouter from "../routes/productRoutes.js";
 import categoryRouter from "../routes/categoryRoutes.js";
 import brandRouter from "../routes/brandRoutes.js";
 import colorRouter from "../routes/colorRoutes.js";
+import reviewRouter from "../routes/reviewRoutes,.js";
+import cross from "cross";
 dotenv.config();
 
 dbConnect();
+app.use(cross());
 const app = express();
 
 app.set("query parser", function (str) {
@@ -36,6 +39,7 @@ app.use("/api/v1/product", productRouter);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/brand", brandRouter);
 app.use("/api/v1/color", colorRouter);
+app.use("/api/v1/review", reviewRouter);
 
 app.use(notFound);
 app.use(globalErrHandler);
