@@ -15,8 +15,8 @@ import cross from "cross";
 dotenv.config();
 
 dbConnect();
-app.use(cross());
 const app = express();
+app.use(cross());
 
 app.set("query parser", function (str) {
   return qs.parse(str, {
