@@ -11,13 +11,12 @@ import categoryRouter from "../routes/categoryRoutes.js";
 import brandRouter from "../routes/brandRoutes.js";
 import colorRouter from "../routes/colorRoutes.js";
 import reviewRouter from "../routes/reviewRoutes,.js";
-import cross from "cross";
+import cors from "cors";
 dotenv.config();
 
 dbConnect();
 const app = express();
-app.use(cross());
-
+app.use(cors());
 app.set("query parser", function (str) {
   return qs.parse(str, {
     depth: 10,
