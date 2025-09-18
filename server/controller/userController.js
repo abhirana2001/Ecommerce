@@ -90,3 +90,44 @@ export const userLogin = asyncHandler(async (req, res) => {
     },
   });
 });
+
+//update shipping address
+
+export const updateShippingAddress = asyncHandler(async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    address,
+    city,
+    postalCode,
+    state,
+    country,
+    phone,
+  } = req.body;
+
+  const user = await User.findByIdAndUpdate(
+    req.user.id,
+    {
+      shippingAddress: {
+        firstName,
+        lastName,
+        address,
+        city,
+        postalCode,
+        state,
+        country,
+        phone,
+      },
+      hasShippingAddress: true,
+    },
+    {
+      new: true,
+    }
+  );
+
+  res.status(200).json({
+    status: "success",
+    message: "Shipping address is successfully updated",
+    user,
+  });
+});

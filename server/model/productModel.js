@@ -55,6 +55,10 @@ const productModel = new Schema(
       required: true,
       default: 0,
     },
+    qtyLeft: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -74,7 +78,6 @@ productModel.virtual("averageRating").get(function () {
   const product = this;
   product?.reviews?.forEach((review) => {
     ratingSum += review?.rating;
-    console.log("review", review);
   });
 
   return ratingSum / product?.reviews?.length;

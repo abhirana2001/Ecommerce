@@ -12,6 +12,7 @@ import brandRouter from "../routes/brandRoutes.js";
 import colorRouter from "../routes/colorRoutes.js";
 import reviewRouter from "../routes/reviewRoutes,.js";
 import cors from "cors";
+import orderRouter from "../routes/orderRoutes.js";
 dotenv.config();
 
 dbConnect();
@@ -39,6 +40,7 @@ app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/brand", brandRouter);
 app.use("/api/v1/color", colorRouter);
 app.use("/api/v1/review", reviewRouter);
+app.use("/api/v1/order", orderRouter);
 
 app.use(notFound);
 app.use(globalErrHandler);

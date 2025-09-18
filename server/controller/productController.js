@@ -40,6 +40,7 @@ export const createProductController = asyncHandler(async (req, res) => {
     colors,
     price,
     totalQty,
+    qtyLeft: totalQty,
   });
 
   // add product to category

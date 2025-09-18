@@ -31,10 +31,12 @@ const orderSchema = new Schema(
       required: true,
       ref: "User",
     },
-    orderItem: {
-      type: Object,
-      required: true,
-    },
+    orderItems: [
+      {
+        type: Object,
+        required: true,
+      },
+    ],
     shippingAddress: {
       type: Object,
       required: true,
@@ -51,6 +53,10 @@ const orderSchema = new Schema(
     paymentMethod: {
       type: String,
       default: "Not specified",
+    },
+    totalPrice: {
+      type: Number,
+      default: 0.0,
     },
     currency: {
       type: String,
